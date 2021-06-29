@@ -23,29 +23,29 @@ grumphp:
       blacklist:
         - 'main'
         - 'master'
-        - 'dev*'
+        # - 'dev*'
       allow_detached_head: false
-    git_commit_message:
-      allow_empty_message: false
-      enforce_capitalized_subject: true
-      enforce_no_subject_punctuations: true
-      enforce_no_subject_trailing_period: true
-    npm_script:
-      script: 'i18n:check'
-      is_run_task: true
-      triggered_by: [php]
-      metadata:
-        label: 'i18n Check'
-    phpcs:
-      standard: './phpcs.xml.dist'
-      report: 'full'
-      ignore_patterns:
-        - '/^assets\/(.*)/'
-      triggered_by: [php]
-    phpstan:
-      configuration: './phpstan.neon.dist'
-      level: 5
-      ignore_patterns:
-        - '/^assets\/(.*)/'
-      memory_limit: '-1'
-      triggered_by: [php]
+    # git_commit_message:
+    #   allow_empty_message: false
+    #   enforce_capitalized_subject: true
+    #   enforce_no_subject_punctuations: true
+    #   enforce_no_subject_trailing_period: true
+    # npm_script:
+    #   script: 'i18n:check'
+    #   is_run_task: true
+    #   triggered_by: [php]
+    #   metadata:
+    #     label: 'i18n Check'
+    # phpcs:
+    #   standard: './phpcs.xml.dist'
+    #   report: 'full'
+    #   ignore_patterns:
+    #     - '/^assets\/(.*)/'
+    #   triggered_by: [php]
+    # phpstan:
+    #   configuration: './phpstan.neon.dist'
+    #   level: 5
+    #   ignore_patterns:
+    #     - '/^assets\/(.*)/'
+    #   memory_limit: '-1'
+    #   triggered_by: [php]

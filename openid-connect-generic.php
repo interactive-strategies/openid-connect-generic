@@ -172,6 +172,9 @@ class OpenID_Connect_Generic {
 
 		if ( is_admin() ) {
 			OpenID_Connect_Generic_Settings_Page::register( $this->settings, $this->logger );
+
+			$mapping = new OpenID_Connect_Generic_Field_Mapping( 'openid_connect_generic_salesforce_field_mapping' );
+			OpenID_Connect_Generic_Mapping_Page::register( $mapping );
 		}
 	}
 

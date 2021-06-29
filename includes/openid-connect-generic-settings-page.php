@@ -150,6 +150,13 @@ class OpenID_Connect_Generic_Settings_Page {
 		);
 
 		add_settings_section(
+			'nimble_settings',
+			__( 'Nimble Settings', 'daggerhart-openid-connect-generic' ),
+			array( $this, 'nimble_settings_description' ),
+			$this->options_page_name
+		);
+
+		add_settings_section(
 			'log_settings',
 			__( 'Log Settings', 'daggerhart-openid-connect-generic' ),
 			array( $this, 'log_settings_description' ),
@@ -368,6 +375,42 @@ class OpenID_Connect_Generic_Settings_Page {
 				'type'        => 'checkbox',
 				'section'     => 'user_settings',
 			),
+			'nimble_sync_enabled' => array(
+				'title'       => __( 'Enable Data Sync with Nimble', 'daggerhart-openid-connect-generic' ),
+				'description' => __( 'If enabled, user data will be updated from Salesforce when a user logs in via CommunityHub OpenID. (Or uses OpenID login to create a WordPress user, or connects their CommunityHub account to an existing WordPress user.)', 'daggerhart-openid-connect-generic' ),
+				'type'        => 'checkbox',
+				'section'     => 'nimble_settings',
+			),
+			'nimble_login_url' => array(
+				'title'       => __( 'API Login Endpoint URL', 'daggerhart-openid-connect-generic' ),
+				'description' => __( 'The Salesforce OpenID endpoint that should be used to log in <strong>to the API account.</strong>', 'daggerhart-openid-connect-generic' ),
+				'type'        => 'text',
+				'section'     => 'nimble_settings',
+			),
+			'nimble_client_id' => array(
+				'title'       => __( 'API Client ID', 'daggerhart-openid-connect-generic' ),
+				'description' => __( 'The client ID to use when retrieving a password grant token from Salesforce.', 'daggerhart-openid-connect-generic' ),
+				'type'        => 'text',
+				'section'     => 'nimble_settings',
+			),
+			'nimble_client_secret' => array(
+				'title'       => __( 'API Client Secret', 'daggerhart-openid-connect-generic' ),
+				'description' => __( 'The client secret to use when retrieving a password grant token from Salesforce.', 'daggerhart-openid-connect-generic' ),
+				'type'        => 'text',
+				'section'     => 'nimble_settings',
+			),
+			'nimble_username' => array(
+				'title'       => __( 'API Username', 'daggerhart-openid-connect-generic' ),
+				'description' => __( 'To use Nimble data sync, you must allow for a password grant token to access the Salesforce API. Enter the API username.', 'daggerhart-openid-connect-generic' ),
+				'type'        => 'text',
+				'section'     => 'nimble_settings',
+			),
+			'nimble_password' => array(
+				'title'       => __( 'API Password', 'daggerhart-openid-connect-generic' ),
+				'description' => __( 'Password for the API user.', 'daggerhart-openid-connect-generic' ),
+				'type'        => 'text',
+				'section'     => 'nimble_settings',
+			),
 			'enable_logging'    => array(
 				'title'       => __( 'Enable Logging', 'daggerhart-openid-connect-generic' ),
 				'description' => __( 'Very simple log messages for debugging purposes.', 'daggerhart-openid-connect-generic' ),
@@ -564,6 +607,15 @@ class OpenID_Connect_Generic_Settings_Page {
 	 */
 	public function authorization_settings_description() {
 		esc_html_e( 'Control the authorization mechanics of the site.', 'daggerhart-openid-connect-generic' );
+	}
+
+	/**
+	 * Output the 'Nimble Settings' plugin setting section description.
+	 *
+	 * @return void
+	 */
+	public function nimble_settings_description() {
+		esc_html_e( 'Control and add credentials for Nimble data sync.', 'daggerhart-openid-connect-generic' );
 	}
 
 	/**
